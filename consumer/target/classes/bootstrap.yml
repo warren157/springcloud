@@ -1,0 +1,35 @@
+server:
+  port: 8083
+
+spring:
+  cloud:
+    #sentinel相关配置
+#    sentinel:
+#      transport:
+#        port: 8719
+#        dashboard: 192.168.1.10:8080
+    #nacos相关配置
+    nacos:
+      discovery:
+        server-addr: 192.168.1.10:8848 #注册中心地址
+        namespace: public
+#        config:
+#          server-addr: 192.168.1.10:8848 #配置中心
+#          file-extension: yaml
+    #应用名称
+
+  application:
+    name: consumer
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#随机负载均衡测率
+ribbon:
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+feign:
+  sentinel:
+    enabled: true

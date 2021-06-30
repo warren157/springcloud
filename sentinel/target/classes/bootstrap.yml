@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+
+spring:
+  cloud:
+    #sentinel相关配置
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 192.168.1.10:8080
+    #nacos相关配置
+    nacos:
+      discovery:
+        server-addr: 192.168.1.10:8848 #注册中心地址
+      config:
+        server-addr: 192.168.1.10:8848 #配置中心
+        file-extension: yaml
+  #应用名称
+  application:
+    name: sentinel
+  #环境配置
+  profiles:
+    active: test
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
